@@ -6,24 +6,15 @@ function move(element) {
         element.style.bottom = bottom + 'px'
     }
 
-    function moveWithArrowKeys(left, bottom){
-       
-    }
-
-    return {
-        to: moveToCoordinates,
-        withArrowKeys: moveWithArrowKeys
-    }        
-}
 function moveWithArrowKeys(left, bottom,callback){
     let direction = null;
-    let x = left;
-    let y = bottom;
+    let x = 100;
+    let y = 250;
 
     element.style.left = x + 'px'
     element.style.bottom = y + 'px'
     
-    function moveCharacter(){ 
+    function moveCharacter(direction){ 
         if(direction === 'west'){
             x-=1
         }
@@ -40,7 +31,7 @@ function moveWithArrowKeys(left, bottom,callback){
         element.style.bottom = y + 'px'
     }
     
-    setInterval(moveCharacter, 1)
+    setInterval(moveCharacter, 2)
     
     document.addEventListener('keydown', function(e){
         if(e.repeat) return;
@@ -64,4 +55,9 @@ function moveWithArrowKeys(left, bottom,callback){
         direction = null
         callback(direction)
     })
+}
+    return {
+        to: moveToCoordinates,
+        withArrowKeys: moveWithArrowKeys
+    }        
 }
